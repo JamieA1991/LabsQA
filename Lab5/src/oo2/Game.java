@@ -5,6 +5,8 @@ import java.awt.event.*;
 import java.util.*;
 import java.util.Timer;
 import javax.swing.*;
+import java.awt.Color;
+import java.util.ArrayList;
 
 class Shape {
 
@@ -75,20 +77,33 @@ enum ShapeType {
 }
 
 public class Game extends Canvas {
-	public static void main(Strings[] args) {
+	public static void main(String[] args) {
 
 		new Game();
-
+		
 	}
 
 	// create an array of 3 balls
-	Shape[] shapes = new Shape[3];
+	// ArrayList<Shape>[] shapes = new ArrayList[10];
 	// call this array balls
 
-	Game() {
-		shapes[0] = new Shape(40, 11, 50, 50, 1, 1, ShapeType.RoundRectangle, Color.cyan);
-		shapes[1] = new Shape(40, 100, 30, 30, 2, 1, ShapeType.Arc, Color.green);
-		shapes[2] = new Shape(40, 100, 80, 30, 2, 2, ShapeType.Oval, Color.ORANGE);
+	// Declare and initialise the array
+	
+	ArrayList<Shape> shapes = new ArrayList<>();
+
+	// Initialise each ArrayList in the array
+
+	public Game() {
+		// shapes[0] = new Shape(40, 11, 50, 50, 1, 1, ShapeType.RoundRectangle,
+		// Color.cyan);
+		// shapes[1] = new Shape(40, 100, 30, 30, 2, 1, ShapeType.Arc, Color.green);
+		// shapes[2] = new Shape(40, 100, 80, 30, 2, 2, ShapeType.Oval, Color.ORANGE);
+		
+		// Add Shape objects to the first few lists
+		shapes.add(new Shape(40, 11, 50, 50, 1, 1, ShapeType.RoundRectangle, Color.cyan));
+		shapes.add(new Shape(40, 100, 30, 30, 2, 1, ShapeType.Arc, Color.green));
+		shapes.add(new Shape(40, 100, 80, 30, 2, 2, ShapeType.Oval, Color.ORANGE));
+
 		Shape.worldH = 500;
 		Shape.worldW = 500;
 
@@ -121,12 +136,15 @@ public class Game extends Canvas {
 		// call the move() method of each balls
 		// Tip: use an enhanced for loop to pick
 //		  each ball in the balls array.
-		for (Shape b : shapes) {
-			b.move();
+		
+			for (Shape b : shapes) {
 
+				b.move();
+
+			}
+			this.repaint();
 		}
-		this.repaint();
-	}
+	
 
 	public void paint(Graphics g) {
 
@@ -134,24 +152,28 @@ public class Game extends Canvas {
 		// move and draw each ball in balls array
 		// Tip: use an enhanced for loop to pick
 //		  each ball in the balls array.
-		for (Shape b : shapes) {
+		
 
-			g.setColor(b.getColourtype());
+			for (Shape b : shapes) {
+				g.setColor(b.getColourtype());
 
-			if (b != null) {
-				if (b.getShapeType() == ShapeType.Rectangle) {
-					g.drawRect(b.x, b.y, b.w, b.h);
-				} else if (b.getShapeType() == ShapeType.ThreeDRectangle) {
-					g.fill3DRect(b.x, b.y, b.w, b.h, true);
-				} else if (b.getShapeType() == ShapeType.RoundRectangle) {
-					g.drawRoundRect(b.x, b.y, b.w, b.h, 20, 20);
-				} else if (b.getShapeType() == ShapeType.Oval) {
-					g.drawOval(b.x, b.y, b.w, b.h);
-				} else if (b.getShapeType() == ShapeType.Arc) {
-					g.drawArc(b.x, b.y, b.w, b.h, 0, 180);
+				if (b != null) {
+					if (b.getShapeType() == ShapeType.Rectangle) {
+						g.drawRect(b.x, b.y, b.w, b.h);
+					} else if (b.getShapeType() == ShapeType.ThreeDRectangle) {
+						g.fill3DRect(b.x, b.y, b.w, b.h, true);
+					} else if (b.getShapeType() == ShapeType.RoundRectangle) {
+						g.drawRoundRect(b.x, b.y, b.w, b.h, 20, 20);
+					} else if (b.getShapeType() == ShapeType.Oval) {
+						g.drawOval(b.x, b.y, b.w, b.h);
+					} else if (b.getShapeType() == ShapeType.Arc) {
+						g.drawArc(b.x, b.y, b.w, b.h, 0, 180);
+
+					}
+
 				}
 			}
 		}
 
 	}
-}
+
