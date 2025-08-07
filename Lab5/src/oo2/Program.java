@@ -19,7 +19,7 @@ public class Program {
 System.out.println("Lane: " + v.lane + " Speed: " + v.Speed +" Reg: " + v.registrationPlate.getNumber());
 ;
 
-Vehicle.showTotalVehicles();
+
 		}
 		
 	}
