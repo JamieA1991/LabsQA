@@ -4,7 +4,7 @@ import java.awt.Color;
 
 import java.awt.Point;
 
-public class Shape {
+public abstract class Shape {
     
     private Color colour;
     private Point position;
