@@ -1,6 +1,6 @@
 package exceptions;
 
-public class Account {
+public class Account  implements Comparable<Account>{
 
 private int id;
 private String owner;
@@ -54,7 +54,21 @@ public void Addinterest() {
 
 	balance += balance * 0.025;
      }
-	
+
+
+
+@Override
+    public int compareTo(Account other) {
+        return Double.compare(this.id, other.id);
+    }
+
+
+
+@Override
+public String toString() {
+    return id +" - " + owner + " - Balance: " + balance;
+}
+
 	
 }
 

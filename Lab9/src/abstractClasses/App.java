@@ -1,6 +1,10 @@
 package abstractClasses;
 
 import java.util.ArrayList;
+
+import abstractClasses.Interface.Flyable;
+import abstractClasses.Interface.Movable;
+import abstractClasses.Interface.Swimable;
 //import java.util.List;
 
 public class App {
@@ -18,13 +22,38 @@ public class App {
 			
 			System.out.println("Animal: " + a.name);
 			
+			if (a instanceof Flyable) {
+				
+				Flyable fly = (Flyable) a;
+				fly.fly();
+				
+				
+			}
+			
+			if (a instanceof Movable) {
+	
+				Movable move = (Movable) a;
+				move.move();
+				
+				
+			}
+			
+			if (a instanceof Swimable) {
+				
+				Swimable swim = (Swimable) a;
+				swim.swim();
+				
+				
+			}
+			
+			
+			
+			
 			if(a instanceof Bird) {
 				((Bird) a).makeNest();
 			}
 			
-			if(a instanceof Fish) {
-				((Fish) a).swim();
-			}
+			
 			
 			
 		}

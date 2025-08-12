@@ -1,7 +1,8 @@
 package abstractClasses;
 
+import abstractClasses.Interface.Swimable;
 
-	public class Fish extends Animal {
+public class Fish extends Animal  implements Swimable {
 
 	    public Fish(String name) {
 	        super(name);
@@ -11,7 +12,7 @@ package abstractClasses;
 	  
 
 	    public void swim() {
-	        System.out.println(name + " is swimming gracefully.");
+	        System.out.println(name + " is swimming like a fish");
 	    }
 	}
 

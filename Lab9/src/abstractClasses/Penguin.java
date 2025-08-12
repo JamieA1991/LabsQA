@@ -1,6 +1,9 @@
 package abstractClasses;
 
-public class Penguin extends Bird {
+
+import abstractClasses.Interface.Movable;
+
+public class Penguin extends Bird implements Movable{
 
 	public Penguin(String name) {
 		super(name);
@@ -11,8 +14,11 @@ public class Penguin extends Bird {
 	@Override
 	public void makeNest() {
 		// TODO Auto-generated method stub
-		System.out.println("Penguin Makes Nest");
+		System.out.println(name + " is making a penguins nest");
 	}
 
-	
+	@Override
+	public void move() {
+		System.out.println(name + " is moving like a Penguin");
+	}
 }

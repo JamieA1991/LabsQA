@@ -25,6 +25,16 @@ public abstract class Animal {
 		return name;
 	}
 
+	public void move() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void fly() {
+		// TODO Auto-generated method stub
+		
+	}
+
 	
 
 }
