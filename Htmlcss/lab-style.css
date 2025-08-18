@@ -1,0 +1,108 @@
+
+
+label, input, select, textarea {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.join_page {
+
+    max-width: 600px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f0f8ff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+
+}
+
+.join_page h1 {
+    text-align: center;
+    color: #333;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="number"],
+select,
+textarea{
+    width: 20%;
+    padding: 8px;
+    margin: 6px 0 12px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap; 
+}
+
+.radio-group label {
+    margin-right: 10px;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.checkbox-group input[type="checkbox"],
+.checkbox-group label {
+    margin-right: 5px;
+}
+
+
+.age-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* space between input and span */
+}
+
+.age-input-wrapper input {
+    width: 100px; /* or whatever width you prefer */
+}
+
+.button_group {
+    text-align: left; /* centres the button */
+    margin-top: 20px;
+}
+
+.button_group button {
+    background-color: #4c82af; /* green background */
+    colour: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button_group button:hover {
+    background-color: #5645a0; /* darker green on hover */
+}
+
+fieldset {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 10px;
+}
+
+
+
+
+
+

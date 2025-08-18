@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="lab1-style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="join-page">
+        <h1>Join the Tech Explorers Club</h1>
+
+        <div class="personal-info">
+
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name"><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br>
+        </div>
+
+        <div class="age group">
+            <label for="age">Age:</label>
+            <div class="age-input-wrapper">
+                <input type="number" id="age" name="age">
+                <span>years</span><br>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="user-preferences">
+            <p>User Type:</p>
+            <div class="radio-group">
+                <input type="radio" id="student" name="userType" value="student">
+                <label for="student">Student</label><br>
+                <input type="radio" id="professional" name="userType" value="professional">
+                <label for="professional">Professional</label><br>
+                <input type="radio" id="Hobbyist" name="userType" value="Hobbyist">
+                <label for="Hobbyist">Hobbyist</label><br>
+            </div>
+
+        </div>
+
+
+        <p>Interests:</p>
+        <div class="checkbox-group">
+            <input type="checkbox" id="AI" name="interests" value="AI">
+            <label for="AI">AI</label><br>
+            <input type="checkbox" id="Cybersecurity" name="interests" value="Cybersecurity">
+            <label for="Cybersecurity">Cybersecurity</label><br>
+            <input type="checkbox" id="Web" name="interests" value="Web">
+            <label for="Web">Web</label><br><br>
+        </div>
+    </div>
+
+    </div>
+
+    <label for="language">Favourite Language:</label>
+    <select id="language" name="language">
+        <option value="python">Python</option>
+        <option value="javascript">JavaScript</option>
+        <option value="java">Java</option>
+        <option value="csharp">C#</option>
+    </select><br>
+
+    <div class="bio">
+        <label for="bio">Why would you like to join?:</label><br>
+        <textarea id="bio" name="bio" rows="5" cols="40"></textarea>
+    </div><br>
+<div class ="button_group">
+    <button type="button">Submit!</button>
+</div>
+
+</body>
+
+</html>
