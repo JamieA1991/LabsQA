@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<h2>Odd numbers and Their Sum</h2>
+<p id ="oddNumbers"></p>
+<p id ="sumresult"></p>
+<body>
+    <script>
+
+let sum = 0;
+let output = "";
+   
+for (let i = 1; i <= 100; i++) {
+      if (i % 2 === 1) {
+        output += i + ", ";
+        sum += i;
+      }
+
+}
+    
+
+
+document.getElementById("oddNumbers").innerHTML = "Odd numbers: " + output.slice(0, -2);
+document.getElementById("sumresult").innerHTML = "Sum of odd numbers: " + sum;
+    </script>
+
+</body>
+</html>
