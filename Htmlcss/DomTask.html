@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Tasks</title>
+    <style>
+        body {
+            font-family: sans-serif;
+        }
+
+        input,
+        button {
+            margin: 5px 0;
+        }
+        
+
+    .priority {
+        font-weight: bold;
+        margin-right: 10px;
+    }
+
+    .priority-1 { color: green; }
+    .priority-2 { color: limegreen; }
+    .priority-3 { color: orange; }
+    .priority-4 { color: orangered; }
+    .priority-5 { color: red; }
+
+    </style>
+</head>
+
+<body>
+    <h2>To-Do List</h2>
+
+    <label for="taskInput">New Task:</label>
+    <input type="text" id="taskInput" placeholder="Enter a task">
+
+    <label for="priorityInput">Priority (1 = highest, 5 = lowest):</label>
+    <input type="number" id="priorityInput" min="1" max="5" value="3">
+
+    <button onclick="addTask()">Add Task</button>
+
+    <ul id="taskList"></ul>
+
+   
+<script>
+    function addTask() {
+        const taskInput = document.getElementById("taskInput");
+        const taskText = taskInput.value.trim();
+        const priorityValue = document.getElementById("priorityInput").value;
+
+        if (taskText !== "") {
+            const li = document.createElement("li");
+            li.className = "task-item";
+
+            // Create priority label
+            const prioritySpan = document.createElement("span");
+            prioritySpan.className = `priority priority-${priorityValue}`;
+            prioritySpan.textContent = `Priority ${priorityValue}: `;
+
+            // Create task text
+            const taskSpan = document.createElement("span");
+            taskSpan.textContent = taskText;
+
+            // Add both to the list item
+            li.appendChild(prioritySpan);
+            li.appendChild(taskSpan);
+
+            // Add to the <ul>
+            document.getElementById("taskList").appendChild(li);
+
+            // Clear the inputs
+            document.getElementById("taskInput").value = "";
+            document.getElementById("priorityInput").value = "3"; // Reset to default
+        }
+    }
+</script>
+
+</body>
+
+</html>
