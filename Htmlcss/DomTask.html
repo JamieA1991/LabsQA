@@ -43,6 +43,7 @@
 
    
 <script>
+    
     function addTask() {
         const taskInput = document.getElementById("taskInput");
         const taskText = taskInput.value.trim();
@@ -50,29 +51,48 @@
 
         if (taskText !== "") {
             const li = document.createElement("li");
+           
             li.className = "task-item";
 
-            // Create priority label
+      
             const prioritySpan = document.createElement("span");
             prioritySpan.className = `priority priority-${priorityValue}`;
             prioritySpan.textContent = `Priority ${priorityValue}: `;
+        
 
-            // Create task text
+          
             const taskSpan = document.createElement("span");
             taskSpan.textContent = taskText;
 
-            // Add both to the list item
+            const completeButton = document.createElement("button");
+            completeButton.textContent = "Completed";
+            completeButton.onclick  =function() {
+
+                li.remove();
+                this.remove();
+            }
+
+     
             li.appendChild(prioritySpan);
             li.appendChild(taskSpan);
-
-            // Add to the <ul>
+            li.appendChild(completeButton);
+         
             document.getElementById("taskList").appendChild(li);
 
-            // Clear the inputs
+            
             document.getElementById("taskInput").value = "";
-            document.getElementById("priorityInput").value = "3"; // Reset to default
+            document.getElementById("priorityInput").value = "3"; 
         }
     }
+
+    document.getElementById("taskInput").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        addTask();
+    }
+});
+
+
 </script>
 
 </body>
