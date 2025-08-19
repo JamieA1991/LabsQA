@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Tasks</title>
     <style>
@@ -12,23 +11,34 @@
         button {
             margin: 5px 0;
         }
-        
 
-    .priority {
-        font-weight: bold;
-        margin-right: 10px;
-    }
+        .priority {
+            font-weight: bold;
+            margin-right: 10px;
+        }
 
-    .priority-1 { color: green; }
-    .priority-2 { color: limegreen; }
-    .priority-3 { color: orange; }
-    .priority-4 { color: orangered; }
-    .priority-5 { color: red; }
+        .priority-1 {
+            color: green;
+        }
 
+        .priority-2 {
+            color: limegreen;
+        }
+
+        .priority-3 {
+            color: orange;
+        }
+
+        .priority-4 {
+            color: orangered;
+        }
+
+        .priority-5 {
+            color: red;
+        }
     </style>
 </head>
-
-<body>
+<body onload="loadItems()">
     <h2>To-Do List</h2>
 
     <label for="taskInput">New Task:</label>
@@ -38,63 +48,84 @@
     <input type="number" id="priorityInput" min="1" max="5" value="3">
 
     <button onclick="addTask()">Add Task</button>
+    <button onclick="saveItems()">Save to Storage</button>
 
     <ul id="taskList"></ul>
 
-   
-<script>
-    
-    function addTask() {
-        const taskInput = document.getElementById("taskInput");
-        const taskText = taskInput.value.trim();
-        const priorityValue = document.getElementById("priorityInput").value;
+    <script>
+        let tasks = [];
 
-        if (taskText !== "") {
-            const li = document.createElement("li");
-           
-            li.className = "task-item";
-
-      
-            const prioritySpan = document.createElement("span");
-            prioritySpan.className = `priority priority-${priorityValue}`;
-            prioritySpan.textContent = `Priority ${priorityValue}: `;
-        
-
-          
-            const taskSpan = document.createElement("span");
-            taskSpan.textContent = taskText;
-
-            const completeButton = document.createElement("button");
-            completeButton.textContent = "Completed";
-            completeButton.onclick  =function() {
-
-                li.remove();
-                this.remove();
+        class Task {
+            constructor(taskText, priorityValue) {
+                this.taskText = taskText;
+                this.priorityValue = priorityValue;
             }
-
-     
-            li.appendChild(prioritySpan);
-            li.appendChild(taskSpan);
-            li.appendChild(completeButton);
-         
-            document.getElementById("taskList").appendChild(li);
-
-            
-            document.getElementById("taskInput").value = "";
-            document.getElementById("priorityInput").value = "3"; 
         }
-    }
 
-    document.getElementById("taskInput").addEventListener("keydown", function (event) {
-    if (event.key === "Enter") {
-        event.preventDefault();
-        addTask();
-    }
-});
+       function renderTask(taskText, priorityValue) {
+    const li = document.createElement("li");
+    li.className = "task-item";
+
+    const prioritySpan = document.createElement("span");
+    prioritySpan.className = `priority priority-${priorityValue}`;
+    prioritySpan.textContent = `Priority ${priorityValue}: `;
+
+    const taskSpan = document.createElement("span");
+    taskSpan.textContent = taskText;
+
+    const completeButton = document.createElement("button");
+    completeButton.textContent = "Completed";
+    completeButton.onclick = function () {
+        // Remove from tasks array
+        tasks = tasks.filter(task => !(task.taskText === taskText && task.priorityValue === priorityValue));
+        // Remove from DOM
+        li.remove();
+    };
+
+    li.appendChild(prioritySpan);
+    li.appendChild(taskSpan);
+    li.appendChild(completeButton);
+
+    document.getElementById("taskList").appendChild(li);
+}
 
 
-</script>
+        function loadItems() {
+            const items = localStorage.getItem("taskList");
+            if (items) {
+                tasks = JSON.parse(items);
+                tasks.forEach(task => {
+                    renderTask(task.taskText, task.priorityValue);
+                });
+            }
+        }
 
+        function saveItems() {
+            localStorage.setItem("taskList", JSON.stringify(tasks));
+            alert("Tasks saved to storage!");
+        }
+
+        function addTask() {
+            const taskInput = document.getElementById("taskInput");
+            const taskText = taskInput.value.trim();
+            const priorityValue = document.getElementById("priorityInput").value;
+
+            if (taskText !== "") {
+                const newTask = new Task(taskText, priorityValue);
+                tasks.push(newTask);
+                renderTask(taskText, priorityValue);
+
+                taskInput.value = "";
+                document.getElementById("priorityInput").value = "3";
+            }
+        }
+
+        document.getElementById("taskInput").addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                addTask();
+            }
+        });
+    </script>
 </body>
-
 </html>
