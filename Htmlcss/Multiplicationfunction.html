@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table Function</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: center;
+        }
+        input {
+            width: 60px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h2>Dynamic Multiplication Table</h2>
+    <label>Rows: <input type="number" id="maxRows" value="10" min="1"></label>
+    <label>Columns: <input type="number" id="maxColumns" value="10" min="1"></label>
+    <button onclick="displayTable()">Generate Table</button>
+
+    <div id="multiplicationTable"></div>
+
+    <script>
+        
+        function multiplicationTable(rows, columns) {
+            let table = "<table>";
+            for (let r = 1; r <= rows; r++) {
+                table += "<tr>";
+                for (let c = 1; c <= columns; c++) {
+                    table += `<td>${r * c}</td>`;
+                }
+                table += "</tr>";
+            }
+            table += "</table>";
+            return table;
+        }
+
+        
+        function displayTable() {
+            const rows = parseInt(document.getElementById("maxRows").value) || 1;
+            const columns = parseInt(document.getElementById("maxColumns").value) || 1;
+            const result = multiplicationTable(rows, columns);
+            document.getElementById("multiplicationTable").innerHTML = result;
+        }
+    </script>
+</body>
+</html>
